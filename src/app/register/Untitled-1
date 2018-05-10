@@ -1,0 +1,8 @@
+class="jcf-checkbox" (click)="clickEvent()"  
+              [ngClass]="status ? 'jcf-checkbox' : 'jcf-checked'"
+
+               <form [formGroup]="riverTrekForm" class="form-group level-select level-select-trek row animated fadeIn"> 
+            <ul  class="col-md-12">
+             <li col-md-4 col-sm-6 *ngFor = "let know of knows; let a = index" ><input type="checkbox">{{know.name[0].value}}</li>
+            </ul>
+          </form>

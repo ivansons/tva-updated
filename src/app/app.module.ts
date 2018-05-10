@@ -62,6 +62,7 @@ import {
         SelectBandComponent,
         WelcomeComponent,
         UserNavComponent,
+        MarkersComponent
       } from './components/index';
 
 
@@ -88,6 +89,7 @@ import {
     HomeComponent,
     LoginComponent,
     RegisterComponent,
+    MarkersComponent,
 
   ],
   imports: [

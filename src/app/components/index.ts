@@ -10,4 +10,6 @@ export { RiverTrekStartComponent } from './river-trek-start/river-trek-start.com
 export { RiverTrekContentsComponent } from './river-trek-contents/river-trek-contents.component';
 export { MapComponent } from './map/map.component';
 export {LevelComponent} from './level/level.component';
+export {MarkersComponent} from './markers/markers.component';
+
 

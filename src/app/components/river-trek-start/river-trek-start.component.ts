@@ -15,12 +15,6 @@ import { RouterLink, Router } from '@angular/router';
 })
 export class RiverTrekStartComponent implements OnInit {
   riverTrekForm: FormGroup;
-  user = {
-    skills: [
-      { name: '',  selected: true, id: 1 },
-      { name: '',  selected: false, id: 2 },
-    ]
-  };
   knows: Levels[];
   constructor(private knowledgeService: KnowledgeService,
     private fb: FormBuilder, private router: Router) {
@@ -29,31 +23,31 @@ export class RiverTrekStartComponent implements OnInit {
         console.log(knows);
       });
 
-       this.riverTrekForm = this.fb.group({
-        skills: this.buildSkills()
-      });
-
-      this.riverTrekForm = new FormGroup({
-        skills: new FormArray([
-           new FormControl(true),
-           new FormControl(false),
-        ])
-     });
 }
 
 
- ngOnInit() {
-  }
-  get skills() {
-    return this.riverTrekForm.get('skills');
-  }
 
-  buildSkills() {
-    const arr = this.user.skills.map(skill => {
-      return this.fb.control(skill.selected);
-    });
-    return this.fb.array(arr);
-  }
+ ngOnInit( ) {
+
+
+  this.riverTrekForm = this.fb.group({
+    knows: this.fb.array([ this.treks() ])
+  });
+}
+
+treks(): FormGroup {
+  return this.fb.group({
+    status: new FormControl({})
+  });
+}
+
+
+
+
+// tslint:disable-next-line:member-ordering
+status = true;
+clickEvent() {
+    this.status = !this.status; }
 
   onSubmit() {
 console.log(this.riverTrekForm.value);

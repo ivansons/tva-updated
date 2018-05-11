@@ -65,7 +65,8 @@ import {
         MarkersComponent
       } from './components/index';
 
-
+    import {WorkflowService} from './workflow/index';
+    import {FormDataService} from './data/index';
 
 
 
@@ -111,8 +112,9 @@ import {
     })
 ],
   providers: [
-  //  MapService,
-   // GeocodingService,
+
+    { provide: FormDataService, useClass: FormDataService },
+    { provide: WorkflowService, useClass: WorkflowService },
     AuthGuard,
     AlertService,
     AuthenticationService,

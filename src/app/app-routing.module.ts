@@ -23,6 +23,7 @@ import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
 import { AuthGuard } from './_guards/index';
+import {WorkflowGuard,  WorkflowService } from './workflow/index';
 
 
 
@@ -30,10 +31,10 @@ const routes: Routes = [
   { path: '', component: LevelComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'level' , component: LevelComponent },
-  { path: 'choose' , component: AreaComponent },
-  { path: 'contents' , component: TrekContentsComponent },
-  { path: 'start' , component: StartComponent },
+  { path: 'level' , component: LevelComponent, canActivate: [WorkflowGuard]},
+  { path: 'choose' , component: AreaComponent, canActivate: [WorkflowGuard] },
+  { path: 'contents' , component: TrekContentsComponent, canActivate: [WorkflowGuard] },
+  { path: 'start' , component: StartComponent, canActivate: [WorkflowGuard] },
   { path: 'trek-start' , component: RiverTrekStartComponent },
   { path: 'trek-content' , component: RiverTrekContentsComponent  },
   { path: 'map', component: MapComponent },
@@ -45,7 +46,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
   ],
 
-
+  providers: [WorkflowGuard],
 exports: [ RouterModule ],
 
   declarations: []

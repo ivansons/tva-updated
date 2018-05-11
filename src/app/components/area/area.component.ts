@@ -3,6 +3,7 @@ import { AreasService } from '../../services/index';
 import { SliderComponent, UserNavComponent, WelcomeComponent  } from '../../components/index';
 import { FormGroup, FormBuilder, FormControl, Form, FormArray, Validators } from '@angular/forms';
 import { RouterLink, Router } from '@angular/router';
+import { Area , FormDataService } from '../../data/index';
 
 
 
@@ -17,25 +18,24 @@ import { RouterLink, Router } from '@angular/router';
 export class AreaComponent implements OnInit {
   areas: Areas;
   areaForm: FormGroup;
-  constructor(private areasService: AreasService , private fb: FormBuilder, private router: Router) {
+  area: string;
+  form: any;
+
+  // tslint:disable-next-line:max-line-length
+  constructor(private areasService: AreasService , private formDataService: FormDataService, private fb: FormBuilder, private router: Router) {
     this.areasService.getAreas().subscribe(areas => {
       this.areas = areas;
     });
     this.areaForm = fb.group({
-      'area': new FormControl(['', Validators.required]),
-      'validate' : new FormControl([!1]),
-
-    });
+      'area': new FormControl(),
+      });
  }
 
   ngOnInit() {
+    this.area = this.formDataService.getStart();
+    console.log('Area feature loaded!');
   }
 
-  onSubmit() {
-
-    console.log(this.areaForm.value);
-    this.router.navigateByUrl('/contents');
-  }
 }
 
 interface Areas {

@@ -17,11 +17,12 @@
         </div>
         <form class="form-group level-select" [formGroup]="levelsForm">
 
-          <label  *ngFor = "let level of levels"><input type="radio" formControlName="name" name="name" value="{{level.name[0].value}}"  jcf> &nbsp;&nbsp;{{level.name[0].value}}</label>
+          <label  *ngFor = "let level of levels"><input  formControlName="start" type="radio" (click)="save()"  name="start" [(ngModel)]="start"  value="{{level.name[0].value}}"  jcf> &nbsp;&nbsp;{{level.name[0].value}}</label>
         
 
           <div class="button wow fadeIn">
-            <button  type="submit"  name="validate" formControlName="validate"  (click)="onSubmit()" class="btn btn-lg btn-start" value="1">Choose Your Level</button>
+            <div class="col-md-12 clearfix" style="margin-top: 20px;"></div>
+            <button type="button"  type="submit" [disabled]="!levelsForm.valid"    (click)="goToNext()" class="btn btn-lg btn-start" >Choose Your Level</button>
           </div>
         
         </form>

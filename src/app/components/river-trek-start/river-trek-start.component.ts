@@ -27,7 +27,7 @@ export class RiverTrekStartComponent implements OnInit {
       });
 
       this.riverTrekForm = fb.group({
-     journey: this.fb.array(['']),
+      journey: new FormControl(),
 
 });
     }

@@ -62,11 +62,13 @@ import {
         SelectBandComponent,
         WelcomeComponent,
         UserNavComponent,
-        MarkersComponent
+        MarkersComponent,
+        LogoutComponent
       } from './components/index';
 
     import {WorkflowService} from './workflow/index';
     import {FormDataService} from './data/index';
+
 
 
 
@@ -91,6 +93,7 @@ import {
     LoginComponent,
     RegisterComponent,
     MarkersComponent,
+    LogoutComponent,
 
   ],
   imports: [

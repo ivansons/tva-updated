@@ -16,6 +16,7 @@ import {
   WelcomeComponent,
   UserNavComponent,
   MapComponent,
+  LogoutComponent
 } from './components/index';
 
 // User AuthGuard Components
@@ -38,6 +39,7 @@ const routes: Routes = [
   { path: 'trek-start' , component: RiverTrekStartComponent },
   { path: 'trek-content' , component: RiverTrekContentsComponent  },
   { path: 'map', component: MapComponent },
+  { path: 'logout', component: LogoutComponent },
 
 ];
 @NgModule({

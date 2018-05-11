@@ -1,7 +1,7 @@
 export const STEPS = {
-    start: 'start',
-    area: 'choose',
-    journey: 'journey',
+    level: 'level',
+    choose: 'choose',
+    contents: 'contents',
 };
 
 

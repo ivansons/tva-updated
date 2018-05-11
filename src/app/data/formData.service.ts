@@ -24,7 +24,7 @@ export class FormDataService {
         this.isStartFormValid = true;
         this.formData.userLevel = data;
         // Validate start Step in Workflow
-        this.workflowService.validateStep(STEPS.start);
+        // this.workflowService.validateStep(STEPS.start);
     }
 
     getArea() {
@@ -37,7 +37,7 @@ export class FormDataService {
         this.isAreaFormValid = true;
         this.formData.areaOptions = data;
         // Validate area Step in Workflow
-        this.workflowService.validateStep(STEPS.area);
+       // this.workflowService.validateStep(STEPS.area);
     }
 
     getJourney() {
@@ -50,7 +50,7 @@ export class FormDataService {
         this.isJourneyFormValid = true;
         this.formData.areaOptions = data;
         // Validate Journey Step in Workflow
-        this.workflowService.validateStep(STEPS.journey);
+        // this.workflowService.validateStep(STEPS.journey);
     }
 
     getFormData(): FormData {

@@ -5,9 +5,9 @@ import { STEPS } from './workflow.model';
 @Injectable()
 export class WorkflowService {
     private workflow = [
-        { step: STEPS.start, valid: false },
-        { step: STEPS.area, valid: false },
-        { step: STEPS.journey, valid: false },
+        { step: STEPS.level, valid: false },
+        { step: STEPS.choose, valid: false },
+        { step: STEPS.contents, valid: false },
     ];
     validateStep(step: string) {
         // If the state is found, set the valid field to true

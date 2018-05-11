@@ -18,7 +18,7 @@ import { Area , FormDataService } from '../../data/index';
 export class AreaComponent implements OnInit {
   areas: Areas;
   areaForm: FormGroup;
-  area: string;
+  choice: string;
   form: any;
 
   // tslint:disable-next-line:max-line-length
@@ -27,14 +27,33 @@ export class AreaComponent implements OnInit {
       this.areas = areas;
     });
     this.areaForm = fb.group({
-      'area': new FormControl(),
+      'choice': new FormControl(),
       });
  }
 
   ngOnInit() {
-    this.area = this.formDataService.getStart();
+    this.choice = this.formDataService.getArea();
     console.log('Area feature loaded!');
   }
+
+  save(form: any): boolean {
+    if (!this.areaForm) {
+        return false;
+    }
+    this.formDataService.setArea(this.choice);
+      return true;
+  }
+
+  goToNext(form: any) {
+
+    console.log(
+      this.formDataService.getArea
+    );
+    if (this.save(form)) {
+        // Navigate to the work page
+        this.router.navigate(['/contents']);
+    }
+}
 
 }
 

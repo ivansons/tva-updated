@@ -12,7 +12,7 @@
           <h2>Let's start by choosing a few journey paths. This is your River Trek, so tell us what you are interested in, and let's get started.</h2>
         </div>
         <form [formGroup]="riverTrekForm" class="form-group level-select level-select-trek row animated fadeIn"> 
-           <label *ngFor = "let know of knows; let a = index" class="col-md-4"><span class="jcf-checkbox" ><span></span><input  name="{{know.name[0].value}}" value=""  type="checkbox"></span> {{know.name[0].value}}</label>
+           <label *ngFor = "let know of knows; let a = index" class="col-md-4"><span class="jcf-checkbox" ><span></span><input name="journey" value="{{know.name[0].value}}"  type="checkbox"></span> {{know.name[0].value}}</label>
        </form>
       </div>
     </div>
@@ -20,11 +20,11 @@
       <div class="col-md-12 button-holder">
         
           <div class="button animated fadeIn">
-              <button (click)="onSubmit()"   class="btn btn-lg btn-start"> Get Started </button>
+              <button (click)="goToNext()"   class="btn btn-lg btn-start"> Get Started </button>
             </div>
       </div>
     </div>
   </div>
-
+<pre>{{journey | json}}</pre>
   <usernav-component></usernav-component>
   <img src="assets/images/compass.png" class="compass animated slideInUp">

@@ -43,7 +43,7 @@ import { fakeBackendProvider } from './_helpers/index';
 import { AlertComponent } from './_directives/index';
 import { AuthGuard } from './_guards/index';
 import { JwtInterceptor } from './_helpers/index';
-import { AlertService, AuthenticationService, UserService, MapService } from './services/index';
+import { AlertService, AuthenticationService, UserService, MapService, LevelsService } from './services/index';
 import { HomeComponent } from './home/index';
 import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
@@ -62,7 +62,17 @@ import {
         SelectBandComponent,
         WelcomeComponent,
         UserNavComponent,
+        WorkComponent,
+        AgeComponent,
+
       } from './components/index';
+
+
+import {FormDataService, } from './data/index';
+import {WorkflowService} from './workflow';
+import { AddressComponent } from './address/address.component';
+import { PersonalComponent } from './personal/personal.component';
+import { ResultComponent } from './result/result.component';
 
 
 
@@ -88,6 +98,11 @@ import {
     HomeComponent,
     LoginComponent,
     RegisterComponent,
+    WorkComponent,
+    AgeComponent,
+    AddressComponent,
+    PersonalComponent,
+    ResultComponent,
 
   ],
   imports: [
@@ -111,6 +126,9 @@ import {
   providers: [
   //  MapService,
    // GeocodingService,
+   {provide: LevelsService, useClass: LevelsService},
+   { provide: FormDataService, useClass: FormDataService },
+                   { provide: WorkflowService, useClass: WorkflowService },
     AuthGuard,
     AlertService,
     AuthenticationService,

@@ -1,16 +1,17 @@
-import { Level } from '../levels';
+export class TrekData {
+  userLevel = '';
+  userArea = '';
+  userPath = '';
 
-export const levels: Level[] = [
-  {
-    id: 1,
-    name: 'Bigginer',
-  },
-  {
-    id: 2,
-    name: 'Intermediate',
-  },
-  {
-    id: 3,
-    name: 'Advanced',
-  },
-];
+}
+export class StageOne {
+  userLevel  = '';
+}
+export class StageTwo {
+  userArea = '';
+}
+
+export class StageThree {
+userPath = '';
+}
+

@@ -38,6 +38,12 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                         username: user.username,
                         firstName: user.firstName,
                         lastName: user.lastName,
+                        email: user.email,
+                        age: user.age,
+                        street: user.street,
+                        city: user.city,
+                        state: user.state,
+                        zip: user.zip,
                         token: 'fake-jwt-token'
                     };
 
@@ -66,10 +72,14 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 this security is implemented server side in a real application*/
                 if (request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
                     // find user by id in users array
+                    // tslint:disable-next-line:prefer-const
                     let urlParts = request.url.split('/');
                     // tslint:disable-next-line:radix
+                    // tslint:disable-next-line:prefer-const
                     let id = parseInt(urlParts[urlParts.length - 1]);
 
+                    // tslint:disable-next-line:prefer-const
+                    // tslint:disable-next-line:no-shadowed-variable
                     let matchedUsers = users.filter(user => user.id === id);
 
                     const user = matchedUsers.length ? matchedUsers[0] : null;
@@ -84,9 +94,11 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             // create user
             if (request.url.endsWith('/api/users') && request.method === 'POST') {
                 // get new user object from post body
+                // tslint:disable-next-line:prefer-const
                 let newUser = request.body;
 
                 // validation
+                // tslint:disable-next-line:prefer-const
                 let duplicateUser = users.filter(user => user.username === newUser.username).length;
                 if (duplicateUser) {
                     return Observable.throw('Username "' + newUser.username + '" is already taken');
@@ -108,7 +120,9 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
                 if (request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
                     // find user by id in users array
+                    // tslint:disable-next-line:prefer-const
                     let urlParts = request.url.split('/');
+                    // tslint:disable-next-line:radix
                     let id = parseInt(urlParts[urlParts.length - 1]);
                     for (let i = 0; i < users.length; i++) {
                         const user = users[i];

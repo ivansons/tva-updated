@@ -4,7 +4,8 @@ import { RouterLink, Router } from '@angular/router';
 import { HtmlTagDefinition } from '@angular/compiler';
 import { Http } from '@angular/http';
 
-import { LevelsService } from '../../services/index';
+import { LevelsService} from '../../services/index';
+import {StageOne} from '../../services/levels-data-model';
 import { SliderComponent, UserNavComponent,  WelcomeComponent } from '../../components/index';
 
 
@@ -19,31 +20,36 @@ import { SliderComponent, UserNavComponent,  WelcomeComponent } from '../../comp
 export class LevelComponent implements OnInit {
 
   levels: Levels[];
-  levelsForm: FormGroup;
-  // tslint:disable-next-line:no-inferrable-types
-  name: string = '';
+  stagesone: StageOne;
+  form: any;
 
   constructor(private levelsService: LevelsService,
      private fb: FormBuilder,
      private router: Router) {
-
-      this.levelsForm = fb.group({
-        'name': new FormControl(['', Validators.required]),
-        'validate' : new FormControl([!0]),
-
-      });
-       this.levelsService.getLevels().subscribe(levels => {
+      this.levelsService.getLevels().subscribe(levels => {
         this.levels = levels;
            });
     }
   ngOnInit() {
+    this.stagesone = this.levelsService.getStageOne();
+      console.log('Address feature loaded!');
+
+    }
+    save(form: any): boolean {
+   if (!form.valid) {
+          return false;
+      }
+      this.levelsService.setStageOne(this.stagesone);
+      return true;
     }
 
-  onSubmit() {
+    goToNext(form: any)  {
+      if (this.save(form)) {
+          // Navigate to the result page
+         // this.router.navigate(['/choose']);
+      }
+  }
 
-    console.log(this.levelsForm.value);
-     this.router.navigateByUrl('/choose');
-}
 
 }
 interface Levels {

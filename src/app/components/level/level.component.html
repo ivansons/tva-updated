@@ -15,13 +15,13 @@
         <div class="wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
           <h1><strong>TVA</strong> Explorer</h1>
         </div>
-        <form class="form-group level-select" [formGroup]="levelsForm">
-
-          <label  *ngFor = "let level of levels"><input type="radio" formControlName="name" name="name" value="{{level.name[0].value}}"  jcf> &nbsp;&nbsp;{{level.name[0].value}}</label>
+        <form #userLevelForm="ngForm"  class="form-group level-select">
+ 
+          <label  *ngFor = "let level of levels" for="userLevel"><input type="radio" name="userLevel" #userLevel="ngModel" [(ngModel)]="stagesone.userLevel" value="{{level.name[0].value}}"  jcf> &nbsp;&nbsp;{{level.name[0].value}}</label>
         
 
           <div class="button wow fadeIn">
-            <button  type="submit"  name="validate" formControlName="validate"  (click)="onSubmit()" class="btn btn-lg btn-start" value="1">Choose Your Level</button>
+            <button  type="submit"   (click)="save(userLevelForm)"class="btn btn-lg btn-start" value="1">Choose Your Level</button>
           </div>
         
         </form>

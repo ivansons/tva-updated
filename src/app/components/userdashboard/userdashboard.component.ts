@@ -1,47 +1,33 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { SwiperComponent, SwiperDirective, SwiperConfigInterface,
   SwiperScrollbarInterface, SwiperPaginationInterface } from 'ngx-swiper-wrapper';
+import { FormDataService } from '../../data/index';
+import { FormData } from '../../data/formData.model';
+
 
 @Component({
   selector: 'app-user-dashboard',
   templateUrl: './userdashboard.component.html',
+  styleUrls: ['./userdashboard.component.css']
 })
 // tslint:disable-next-line:component-class-suffix
 export class UserDashboard implements OnInit {
-  ngOnInit() {
+  title = 'Thanks for staying tuned!';
+  @Input() formData: FormData;
+  isFormValid = false;
+  constructor(private formDataService: FormDataService) {
   }
 
-  // tslint:disable-next-line:member-ordering
-  public show = true;
-  // tslint:disable-next-line:member-ordering
-  public type = 'component';
+  ngOnInit() {
+      this.formData = this.formDataService.getFormData();
+      this.isFormValid = this.formDataService.isFormValid();
+      console.log('Result feature loaded!');
+  }
 
-    // tslint:disable-next-line:member-ordering
-    public disabled = false;
-
-    // tslint:disable-next-line:member-ordering
-    public config: SwiperConfigInterface = {
-      slidesPerView: 4,
-      spaceBetween: 10,
-      breakpoints: {
-        // when window width is <= 320px
-        320: {
-          slidesPerView: 2,
-          spaceBetween: 10
-        },
-        // when window width is <= 480px
-        480: {
-          slidesPerView: 2,
-          spaceBetween: 10
-        },
-        // when window width is <= 640px
-        768: {
-          slidesPerView: 3,
-          spaceBetween: 10
-        }
-      },
-    };
-
-
+  submit() {
+      alert('Excellent Job!');
+      this.formData = this.formDataService.resetFormData();
+      this.isFormValid = false;
+  }
 
 }
